@@ -1,0 +1,15 @@
+<% if current_user %>
+<%= link_to 'Новый рецепт', new_recipe_path %>
+<br />
+<br />
+<% end %>
+
+<br />
+<%= render @recipes %>
+
+<br />
+<br />
+<br />
+<% if current_user %>
+<%= link_to 'Новый рецепт', new_recipe_path %>
+<% end %>

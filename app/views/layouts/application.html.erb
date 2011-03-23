@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Кулинарная книга</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+      <%= stylesheet_link_tag 'default' %>
+      <%= javascript_include_tag  %>
+      <%= csrf_meta_tag %>
+</head>
+<body>
+<div id="wrapper">
+  <div id="header">
+    <div id="logo">
+      <h1><%= link_to 'Рецепты' %></h1>
+    </div>
+    <!-- end div#logo -->
+  </div>
+  <!-- end div#header -->
+  <div id="menu">
+    <ul>
+      <li class="active"><%= link_to "Главная", {:controller => "recipes", :action => "demo"} %></li>
+      <li><%= link_to "Рецепты", recipes_path %></li>
+      <li><%= link_to "Категории", cats_path %></li>
+      <% if current_user %>
+      <%= link_to current_user.username, edit_user_path(current_user.id)%>
+      <%= link_to "Выйти", :logout%>
+      <% else %>
+      <li><%= link_to "Войти", :login %></li>
+      <li><%= link_to "Регистрация", new_user_path%></li>
+      <% end %>
+    </ul>
+  </div>
+  <!-- end div#menu -->
+  <div id="page">
+    <div id="page-bgtop">
+      <div id="content">
+
+        <%= yield %>
+
+      </div>
+      <!-- end div#content -->
+      <div id="sidebar">
+        <ul>
+          <li id="search">
+            <h2 class="search">Найти рецепт</h2>
+             <%= form_tag recipes_path, :method => 'get' do %>
+            <p>
+              <%= text_field_tag :search, params[:search], :id => "search-text" %>
+              <%= submit_tag "Search", :name => nil, :id => "search-submit" %>
+            </p>
+            <% end %>
+          </li>
+          <li>
+            <h2>Последние рецепты</h2>
+            <ul>
+              <% Recipe.order("updated_at DESC").limit(10).each do |r| %>
+              <li><%= link_to r.title, r %></li>
+              <% end %>
+            </ul>
+          </li>
+          <li>
+            <h2>Последние категории</h2>
+            <ul>
+              <% Cat.order("updated_at DESC").limit(5).each do |c| %>
+              <li><%= link_to c.title, c %></li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- end div#sidebar -->
+      <div style="clear: both; height: 1px"></div>
+    </div>
+  </div>
+  <!-- end div#page -->
+  <div id="footer">
+    <p>Copyright &copy; 2011 lol007</p>
+  </div>
+  <!-- end div#footer -->
+</div>
+<!-- end div#wrapper -->
+</body>
+</html>

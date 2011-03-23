@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= @cat.title %>
+</p>
+
+<p>
+  <%= @cat.description %>
+</p>
+<%= render @recipe %>
+
+<!--<%= link_to 'Edit', edit_cat_path(@cat) %> |
+<%= link_to 'Back', cats_path %>-->
+<% if current_user %>
+<%= link_to 'Редактировать', edit_cat_path(@cat) %>
+<% end %>
+

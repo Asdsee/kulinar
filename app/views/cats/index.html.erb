@@ -1,0 +1,16 @@
+<% if current_user %>
+<%= link_to 'Новая категория', new_cat_path %>
+<br />
+<br />
+<% end %>
+
+<br />
+<%= render @cats %>
+
+<br />
+<br />
+<br />
+
+<% if current_user %>
+<%= link_to 'Новая категория', new_cat_path %>
+<% end %>

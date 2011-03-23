@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  cat_id: 1
+  title: MyString
+  image_path: MyString
+  description: MyText
+  component: MyText
+  recipe: MyText
+
+two:
+  cat_id: 1
+  title: MyString
+  image_path: MyString
+  description: MyText
+  component: MyText
+  recipe: MyText

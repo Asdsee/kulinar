@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<% @recipes.each do |r| %>
+
+
+        <div class="post">
+          <h2 class="title"><%= link_to r.title, r %></h2>
+          <p class="byline"><%= r.description %></p>
+          <%= image_tag(r.image_path, :size => '135x100', :class => 'demodemo')%>
+          <div class="entry">
+            <%= r.recipe %>
+          </div>
+          <div class="meta">
+            <p><%= link_to "Подробнее", r, :class => 'links' %></p>
+          </div>
+        </div>
+
+
+
+<% end %>
+

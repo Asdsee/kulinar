@@ -1,0 +1,8 @@
+<%= div_for recipe do %>
+Категория: <%= link_to recipe.cat.title, recipe.cat %>
+  <h4><%= link_to recipe.title.html_safe, recipe %> </h4>
+<p class="description">
+  <%= raw recipe.description %>
+</p>
+<p><%= image_tag(recipe.image_path, :size => '350x250')%></p>
+<% end %>
