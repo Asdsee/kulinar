@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
- USERNAME, PASSWORD = "nalby", "nalby"
-
-  before_filter :authenticate
-
 
 
 
@@ -51,7 +47,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to({:controller => 'recipes', :action => 'demo'}, :notice => 'Registration successfull.') }
+        format.html { redirect_to({:controller => 'recipes', :action => 'demo'}, :notice => t(:user_reg)) }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
@@ -67,7 +63,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+        format.html { redirect_to(@user, :notice => t(:user_upd)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -88,11 +84,5 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-  def authenticate
-    authenticate_or_request_with_http_basic do |username, password|
-      username == USERNAME && password == PASSWORD
-    end
-  end
 
 end

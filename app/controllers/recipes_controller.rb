@@ -49,7 +49,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to(@recipe, :notice => 'Recipe was successfully created.') }
+        format.html { redirect_to(@recipe, :notice => t(:recipe_cr)) }
         format.xml  { render :xml => @recipe, :status => :created, :location => @recipe }
       else
         format.html { render :action => "new" }
@@ -65,7 +65,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.update_attributes(params[:recipe])
-        format.html { redirect_to(@recipe, :notice => 'Recipe was successfully updated.') }
+        format.html { redirect_to(@recipe, :notice => t(:recipe_upd)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -87,7 +87,6 @@ class RecipesController < ApplicationController
   end
 
   def demo
-    # @recipes = Recipe.where({ :created_at => (Time.now.midnight - 5.day)..Time.now.midnight})
     @recipes = Recipe.order("created_at DESC").limit(5)
   end
 end

@@ -45,7 +45,7 @@ class CatsController < ApplicationController
 
     respond_to do |format|
       if @cat.save
-        format.html { redirect_to(@cat, :notice => 'Категория успешно создана') }
+        format.html { redirect_to(@cat, :notice => t(:cat_cr)) }
         format.xml  { render :xml => @cat, :status => :created, :location => @cat }
       else
         format.html { render :action => "new" }
@@ -61,7 +61,7 @@ class CatsController < ApplicationController
 
     respond_to do |format|
       if @cat.update_attributes(params[:cat])
-        format.html { redirect_to(@cat, :notice => 'Категория успешно обновлена') }
+        format.html { redirect_to(@cat, :notice => t(:cat_upd)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
